@@ -1,0 +1,46 @@
+<hr />
+<form #loginForm="ngForm" (ngSubmit)="handleSubmitForm(loginForm)">
+  <div class="mb-3">
+    <label for="name" class="form-label">name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="email"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      [(ngModel)]="loginData.email"
+      required
+      #email="ngModel"
+    />
+    @if(email.invalid && email.touched ){
+    <div id="nameErrors" class="form-text text-danger">
+      Email Filed Is Required
+    </div>
+    }
+    @if(email.hasError('pattern')) {
+        <span class="form-text text-danger">Please enter a valid email address</span>
+        }
+
+  </div>
+  <div class="mb-3">
+    <label for="ingrediants" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="ingrediants"
+      name="password"
+      [(ngModel)]="loginData.password"
+      required
+      #password="ngModel"
+    />
+
+    @if(password.invalid && password.touched){
+    <div id="nameErrors" class="form-text text-danger">
+      <span>password filed is  Required</span>
+       
+    </div>
+    }
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

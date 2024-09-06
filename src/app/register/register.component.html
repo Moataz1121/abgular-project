@@ -1,0 +1,90 @@
+<div class="container mt-4">
+  <h1 class="text-center">Register</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+      />@if (registerForm.controls['name'].invalid && registerForm.controls['name'].touched) {
+      <div id="nameErrors" class="form-text text-danger">
+        Name Filed Is Required
+      </div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+     
+      />
+      @if (registerForm.controls['email'].invalid && registerForm.controls['email'].touched) {
+      <div id="emailErrors" class="form-text text-danger">
+        Email Filed Is Required and must be valid
+      </div>
+      }
+      
+  
+    </div>
+
+    <!-- <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        id="username"
+        class="form-control"
+        formControlName="username"
+      />
+      @if (registerForm.controls['username'].invalid && registerForm.controls['username'].touched) {
+      <div id="usernameErrors" class="form-text text-danger">
+        Username Filed Is Required
+      </div>
+      }
+    </div> -->
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        formControlName="password"
+      />
+      @if (registerForm.controls['password'].invalid && registerForm.controls['password'].touched) {
+      <div id="passwordErrors" class="form-text text-danger">
+        Password Filed Is Required
+      </div>
+      }
+      @if (registerForm.controls['password'].hasError('pattern')) {
+        <span class="form-text text-danger">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character</span>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        class="form-control"
+        formControlName="confirmPassword"
+      />
+      @if (registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched) {
+      <div id="confirmPasswordErrors" class="form-text text-danger">
+        Confirm Password Filed Is Required
+      </div>
+      }
+      @if ((registerForm.errors ?? {})['mismatch']) {
+        <span class="form-text text-danger">Passwords do not match</span>
+      }
+      
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>

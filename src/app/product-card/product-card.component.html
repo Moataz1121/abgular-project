@@ -1,0 +1,23 @@
+<div class="card h-100">
+    <img [src]="productItem['images'][0]" class="card-img-top" alt="recipeItem.name" />
+    <div class="card-body">
+  
+        <span class="badge  w-25 mt-3 mx-3 {{ productItem.stock === 0 ? 'bg-danger'   : 'bg-success' }}">
+            {{ productItem.stock === 0 ? 'out of stock'   : 'in stock' }}
+        </span>
+        
+         
+    <h5 class="mt-2">Tilte :{{productItem.title}}</h5>
+     <p>description : {{productItem.description}}</p>
+     <p>Price : {{productItem.price}} $</p>
+     <p>Rating:
+      @for (star of [].constructor(5);track $index) {
+        <i class="fa " [ngClass]="{
+              'fa-star text-warning': $index < productItem.rating,
+            }"></i>
+        }
+    </p>
+     <button class="btn btn-dark rounded-5 mx-3">Add to cart</button>
+     <button class="btn btn-primary rounded-5" (click)="onView(productItem.id)">View</button>
+    </div>
+  </div>

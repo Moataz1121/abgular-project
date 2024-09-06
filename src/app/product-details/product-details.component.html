@@ -1,0 +1,30 @@
+<div class="product-container d-flex my-3">
+    <div class="product-image">
+      <img [src]="productItem['images'][0]" alt="{{productItem.title}}" class="img-fluid h-50">
+    </div>
+  
+    <div class="product-details ms-4">
+      <h2>Title : {{productItem.title}}</h2>
+      
+      <p> Description : {{productItem.description}}</p>
+      <p> Category : {{productItem.category}}</p>
+      
+      <p>Rating:
+        @for (star of [].constructor(5);track $index) {
+          <i class="fa " [ngClass]="{
+                'fa-star text-warning': $index < productItem.rating,
+              }"></i>
+          }
+      </p>
+      <span style="text-decoration: line-through;">{{productItem.price }} $</span>  
+      <p [ngClass]="productItem.stock === 0 ? 'text-danger' : 'text-success'">
+        {{ productItem.stock === 0 ? 'Out of Stock' : 'In Stock' }}
+      </p>
+          <p class="ms-2 fs-1">After Sale ${{ discountedPrice() }}</p>
+      <div class="product-actions mt-4">
+        <button class="btn btn-primary mx-2" >Buy Now</button>
+        <button class="btn btn-secondary" >Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  
