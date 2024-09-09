@@ -23,7 +23,7 @@
           <p class="ms-2 fs-1">After Sale ${{ discountedPrice() }}</p>
       <div class="product-actions mt-4">
         <button class="btn btn-primary mx-2" >Buy Now</button>
-        <button class="btn btn-secondary" >Add to Cart</button>
+        <button class="btn btn-secondary" (click)="addToCart(productItem)" >Add to Cart</button>
       </div>
     </div>
   </div>
